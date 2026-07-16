@@ -106,4 +106,49 @@ async function loadPosts() {
 
 }
 
-window.update
+window.updatePost = async function(id){
+
+  const views = Number(document.getElementById(`views-${id}`).value);
+
+  const likes = Number(document.getElementById(`likes-${id}`).value);
+
+  try{
+
+    await updateDoc(doc(db,"posts",id),{
+      views,
+      likes
+    });
+
+    alert("✅ Updated");
+
+    loadPosts();
+
+  }catch(e){
+
+    alert(e.message);
+
+  }
+
+}
+
+window.deletePost = async function(id){
+
+  if(!confirm("Delete this post?")) return;
+
+  try{
+
+    await deleteDoc(doc(db,"posts",id));
+
+    alert("✅ Deleted");
+
+    loadPosts();
+
+  }catch(e){
+
+    alert(e.message);
+
+  }
+
+}
+
+loadPosts();
