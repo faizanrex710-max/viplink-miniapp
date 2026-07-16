@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Viral Videos</title>
+  <title>Daily Viral Videos😍</title>
 
   <link rel="stylesheet" href="./style.css">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -13,13 +13,29 @@
 
 <header class="topbar">
 
-  <div class="logo">
-    😍 Daily Viral Videos
+  <div class="left">
+
+    <div class="avatar">
+      😍
+    </div>
+
+    <div class="info">
+      <h2>Daily Viral Videos</h2>
+      <span id="postCount">Loading...</span>
+    </div>
+
   </div>
 
-  <div class="icons">
-    <span id="searchBtn">🔍</span>
-    <span id="refreshBtn" onclick="location.reload()">🔄</span>
+  <div class="right">
+
+    <button id="searchBtn">
+      🔍
+    </button>
+
+    <button onclick="location.reload()">
+      🔄
+    </button>
+
   </div>
 
 </header>
@@ -31,22 +47,29 @@
 <script>
 const tg = window.Telegram?.WebApp;
 
-if (tg) {
-  tg.ready();
-  tg.expand();
+if(tg){
 
-  document.body.style.background =
-    tg.themeParams.bg_color || "#0f172a";
+tg.ready();
 
-  try {
-    tg.MainButton.setText("📢 Join Telegram");
-    tg.MainButton.show();
+tg.expand();
 
-    tg.MainButton.onClick(() => {
-      tg.openTelegramLink("https://t.me/VIRALVIDEOS_8");
-    });
+document.body.style.background=
+tg.themeParams.bg_color||"#0f172a";
 
-  } catch (e) {}
+try{
+
+tg.MainButton.setText("📢 Join Telegram");
+
+tg.MainButton.show();
+
+tg.MainButton.onClick(()=>{
+
+tg.openTelegramLink("https://t.me/VIRALVIDEOS_8");
+
+});
+
+}catch(e){}
+
 }
 </script>
 
