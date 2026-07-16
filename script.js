@@ -71,15 +71,18 @@ onclick="openVideo('${post.id}','${post.link}')">
 
 <div class="post-actions">
 
-<button onclick="likePost('${post.id}')">
+<button class="action-btn"
+onclick="likePost('${post.id}')">
 ❤️ Like
 </button>
 
-<button onclick="savePost('${post.id}')">
+<button class="action-btn"
+onclick="savePost('${post.id}')">
 🔖 Saved
 </button>
 
-<button onclick="sharePost('${post.link}')">
+<button class="action-btn"
+onclick="sharePost('${post.link}')">
 📤 Share
 </button>
 
@@ -110,12 +113,16 @@ window.open(link,"_blank");
 
 // ❤️ Like
 window.likePost=(id)=>{
-alert("❤️ Post Liked");
+
+alert("❤️ Liked");
+
 };
 
 // 🔖 Save
 window.savePost=(id)=>{
-alert("🔖 Post Saved");
+
+alert("🔖 Saved");
+
 };
 
 // 📤 Share
@@ -131,7 +138,7 @@ url:link
 }else{
 
 navigator.clipboard.writeText(link);
-alert("✅ Link Copied");
+alert("📋 Link Copied");
 
 }
 
@@ -148,7 +155,9 @@ searchInput.addEventListener("input",()=>{
 const value=searchInput.value.toLowerCase();
 
 const filtered=allPosts.filter(post=>
+
 (post.title||"").toLowerCase().includes(value)
+
 );
 
 renderPosts(filtered);
