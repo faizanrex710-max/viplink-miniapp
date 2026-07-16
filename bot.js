@@ -1,0 +1,40 @@
+const TelegramBot = require("node-telegram-bot-api");
+
+const token = "8783557560:AAEDmW0wh98PD4tkC8DqVqjq_k2VYXS7c2Y";
+
+const bot = new TelegramBot(token, {
+  polling: true
+});
+
+bot.onText(/\/start/, (msg) => {
+
+  bot.sendMessage(
+    msg.chat.id,
+`👋 Welcome!
+
+📺 Latest videos dekhne ke liye niche button dabao.`,
+    {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "📢 Join Channel",
+              web_app: {
+                url: "https://viplink-miniapp2.vercel.app/"
+              }
+            }
+          ],
+          [
+            {
+              text: "🔗 Share Bot",
+              url: "https://t.me/share/url?url=https://t.me/VIPVIRALVIDEOS_BOT"
+            }
+          ]
+        ]
+      }
+    }
+  );
+
+});
+
+console.log("✅ Bot Started");
