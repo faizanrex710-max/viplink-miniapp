@@ -6,6 +6,8 @@
   <title>Daily Viral Videos</title>
 
   <link rel="stylesheet" href="./style.css">
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
@@ -36,9 +38,16 @@
 
 </div>
 
-<script src="script.js"></script>
+<script src="./script.js"></script>
 
 <script>
+const tg = window.Telegram?.WebApp;
+
+if (tg) {
+  tg.ready();
+  tg.expand();
+}
+
 function openChannel() {
   window.location.href = "https://t.me/VIRALVIDEOS_8";
 }
