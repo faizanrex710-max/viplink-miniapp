@@ -6,6 +6,7 @@
   <title>Daily Viral Videos</title>
 
   <link rel="stylesheet" href="./style.css">
+
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
@@ -27,6 +28,18 @@ const tg = window.Telegram?.WebApp;
 if (tg) {
   tg.ready();
   tg.expand();
+
+  // Telegram theme
+  document.body.style.background =
+    tg.themeParams.bg_color || "#0f172a";
+
+  // Main Button
+  tg.MainButton.setText("📢 Join Telegram");
+  tg.MainButton.show();
+
+  tg.MainButton.onClick(() => {
+    window.open("https://t.me/VIRALVIDEOS_8", "_blank");
+  });
 }
 </script>
 
