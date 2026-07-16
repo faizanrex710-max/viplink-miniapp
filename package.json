@@ -1,5 +1,12 @@
 {
   "name": "viplink-miniapp",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0"
+  }
 }
