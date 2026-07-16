@@ -11,8 +11,17 @@
 
 <body>
 
-<header>
-  🎬 Daily Viral Videos
+<header class="topbar">
+
+  <div class="logo">
+    😍 Daily Viral Videos
+  </div>
+
+  <div class="icons">
+    <span id="searchBtn">🔍</span>
+    <span id="refreshBtn" onclick="location.reload()">🔄</span>
+  </div>
+
 </header>
 
 <div class="container"></div>
@@ -34,16 +43,10 @@ if (tg) {
     tg.MainButton.show();
 
     tg.MainButton.onClick(() => {
-      try {
-        tg.openTelegramLink("https://t.me/VIRALVIDEOS_8");
-      } catch (e) {
-        window.location.href = "https://t.me/VIRALVIDEOS_8";
-      }
+      tg.openTelegramLink("https://t.me/VIRALVIDEOS_8");
     });
 
-  } catch (e) {
-    console.log("Telegram Error:", e);
-  }
+  } catch (e) {}
 }
 </script>
 
