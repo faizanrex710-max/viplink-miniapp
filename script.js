@@ -1,82 +1,153 @@
 import { db } from "./firebase.js";
 
 import {
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  doc,
-  updateDoc,
-  increment
+collection,
+getDocs,
+query,
+orderBy,
+doc,
+updateDoc,
+increment
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
+const container=document.getElementById("posts");
+const postCount=document.getElementById("postCount");
 
-  const container = document.querySelector(".container");
+let allPosts=[];
 
-  try {
+async function loadPosts(){
 
-    const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-    const snapshot = await getDocs(q);
+const q=query(
+collection(db,"posts"),
+orderBy("createdAt","desc")
+);
 
-    let html = `
-      <input type="text" class="search" placeholder="🔍 Search Videos...">
+const snapshot=await getDocs(q);
 
-      <div class="category">
-        <button>🔥 Trending</button>
-        <button>😂 Funny</button>
-        <button>🎬 Movies</button>
-        <button>❤️ Status</button>
-      </div>
-    `;
+allPosts=[];
 
-    snapshot.forEach((item) => {
+snapshot.forEach(docSnap=>{
 
-      const post = item.data();
-
-      html += `
-      <div class="card">
-
-        <img src="${post.image}" alt="${post.title}">
-
-        <div class="content">
-
-          <div class="title">${post.title}</div>
-
-          <div style="color:#bbb;margin:8px 0;">
-            👁️ ${post.views || 0} Views
-          </div>
-
-          <button onclick="openVideo('${item.id}','${post.link}')">
-            📥 Download Now
-          </button>
-
-        </div>
-
-      </div>
-      `;
-
-    });
-
-    container.innerHTML = html;
-
-  } catch (e) {
-    console.error(e);
-    container.innerHTML = "<h2>Error Loading Posts</h2>";
-  }
+allPosts.push({
+id:docSnap.id,
+...docSnap.data()
+});
 
 });
 
-window.openVideo = async function(id, link){
+postCount.innerHTML=`${allPosts.length} posts`;
 
-  try{
-    await updateDoc(doc(db,"posts",id), {
-      views: increment(1)
-    });
-  }catch(e){
-    console.log(e);
-  }
-
-  window.open(link,"_blank");
+renderPosts(allPosts);
 
 }
+
+function renderPosts(posts){
+
+container.innerHTML="";
+
+posts.forEach(post=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<img src="${post.image}" alt="">
+
+<div class="content">
+
+<div class="title">
+${post.title}
+</div>
+
+<div class="views">
+👁️ ${post.views||0} Views
+</div>
+
+<button
+class="download-btn"
+onclick="openVideo('${post.id}','${post.link}')">
+📥 Open Post
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+window.openVideo=async(id,link)=>{
+
+try{
+
+await updateDoc(doc(db,"posts",id),{
+
+views:increment(1)
+
+});
+
+}catch(e){}
+
+window.open(link,"_blank");
+
+};
+// Search
+
+const searchInput=document.getElementById("searchInput");
+
+if(searchInput){
+
+searchInput.addEventListener("input",()=>{
+
+const value=searchInput.value.toLowerCase();
+
+const filtered=allPosts.filter(post=>
+
+(post.title||"").toLowerCase().includes(value)
+
+);
+
+renderPosts(filtered);
+
+});
+
+}
+
+// Saved Tab
+
+const tabs=document.querySelectorAll(".tabs button");
+
+tabs[0].onclick=()=>{
+
+renderPosts(allPosts);
+
+tabs[0].classList.add("active");
+tabs[1].classList.remove("active");
+
+};
+
+tabs[1].onclick=()=>{
+
+tabs[1].classList.add("active");
+tabs[0].classList.remove("active");
+
+container.innerHTML=`
+
+<div class="saved-empty">
+
+<h2>🔖 Saved Posts</h2>
+
+<p>No saved posts yet.</p>
+
+</div>
+
+`;
+
+};
+
+// Load Posts
+
+loadPosts().catch(console.error);
