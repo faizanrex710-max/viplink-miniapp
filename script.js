@@ -63,7 +63,7 @@ ${post.title}
 </div>
 
 <div class="views">
-👁️ ${post.views||0} Views
+👁️ ${post.views || 0} &nbsp;&nbsp; ❤️ ${post.likes || 0}
 </div>
 
 <button
