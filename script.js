@@ -119,17 +119,29 @@ window.open(link,"_blank");
 };
 
 // ❤️ Like
-window.likePost = (id, btn) => {
+window.likePost = async (id, btn) => {
 
-  btn.innerHTML = "❤️ Liked";
-  btn.style.background = "#ff3b5c";
-  btn.style.color = "#fff";
+  try {
 
-  setTimeout(() => {
-    btn.innerHTML = "❤️ Like";
-    btn.style.background = "";
-    btn.style.color = "";
-  }, 1500);
+    await updateDoc(doc(db, "posts", id), {
+      likes: increment(1)
+    });
+
+    btn.innerHTML = "❤️ Liked";
+    btn.style.background = "#ff3b5c";
+    btn.style.color = "#fff";
+
+    loadPosts();
+
+    setTimeout(() => {
+      btn.innerHTML = "❤️ Like";
+      btn.style.background = "";
+      btn.style.color = "";
+    }, 1500);
+
+  } catch (e) {
+    console.log(e);
+  }
 
 };
 
