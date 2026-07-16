@@ -7,6 +7,7 @@ const bot = new TelegramBot(token, {
   polling: true
 });
 
+// START COMMAND
 bot.onText(/\/start/, async (msg) => {
 
   try {
@@ -20,7 +21,7 @@ bot.onText(/\/start/, async (msg) => {
     console.log("✅ User Saved:", msg.chat.id);
 
   } catch (err) {
-    console.log("Firebase Error:", err);
+    console.log(err);
   }
 
   bot.sendMessage(
@@ -38,28 +39,89 @@ Aap @VIPVIRALVIDEOS_BOT pe pohche hain.
 • Smooth infinite scroll
 
 👇`,
-    {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: "📢 Join Channel",
-              web_app: {
-                url: "https://viplink-miniapp2.vercel.app/"
-              }
-            }
-          ],
-          [
-            {
-              text: "🔗 Share Bot",
-              url: "https://t.me/share/url?url=https://t.me/VIPVIRALVIDEOS_BOT"
-            }
-          ]
-        ]
-      }
-    }
-  );
+{
+reply_markup:{
+inline_keyboard:[
+[
+{
+text:"📢 Join Channel",
+web_app:{
+url:"https://viplink-miniapp2.vercel.app/"
+}
+}
+],
+[
+{
+text:"🔗 Share Bot",
+url:"https://t.me/share/url?url=https://t.me/VIPVIRALVIDEOS_BOT"
+}
+]
+]
+}
+}
+);
 
 });
+
+
+// ==============================
+// AUTO MESSAGE EVERY 1 HOUR
+// ==============================
+
+async function sendAutoMessage(){
+
+try{
+
+const snapshot = await db.collection("users").get();
+
+snapshot.forEach(async(doc)=>{
+
+const user = doc.data();
+
+try{
+
+await bot.sendMessage(
+user.chatId,
+
+`🚀 Kyaa appne ab tk video dekh li
+
+👁️ Latest viral videos ready hain.
+
+👇 Niche button dabao aur seedha post par pahunch jao.`,
+
+{
+reply_markup:{
+inline_keyboard:[
+[
+{
+text:"📱 Open Channel",
+web_app:{
+url:"https://viplink-miniapp2.vercel.app/"
+}
+}
+]
+]
+}
+}
+);
+
+}catch(e){
+
+console.log("Skip:",user.chatId);
+
+}
+
+});
+
+}catch(err){
+
+console.log(err);
+
+}
+
+}
+
+// 1 Hour = 3600000 ms
+setInterval(sendAutoMessage,3600000);
 
 console.log("✅ Bot Started");
