@@ -76,7 +76,7 @@ onclick="openVideo('${post.id}','${post.link}')">
 
 <button
 class="action-btn"
-onclick="likePost('${post.id}')">
+onclick="likePost('${post.id}', this)">
 ❤️ Like
 </button>
 
@@ -119,9 +119,7 @@ window.open(link,"_blank");
 };
 
 // ❤️ Like
-window.likePost = (id) => {
-
-  const btn = event.target;
+window.likePost = (id, btn) => {
 
   btn.innerHTML = "❤️ Liked";
   btn.style.background = "#ff3b5c";
