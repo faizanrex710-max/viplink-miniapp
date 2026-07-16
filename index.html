@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VIP Link Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>VIP Link Mini App</h1>
+<h1>VIP Link Mini App</h1>
 
-  <button onclick="alert('Welcome!')">Open</button>
+<button id="openBtn">Open Channel</button>
 
-  <script src="script.js"></script>
+<script>
+  Telegram.WebApp.ready();
+
+  document.getElementById("openBtn").onclick = function () {
+    window.open("https://t.me/VIRALVIDEOS_8", "_blank");
+  };
+</script>
 
 </body>
 </html>
