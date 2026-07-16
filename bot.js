@@ -12,7 +12,17 @@ bot.onText(/\/start/, (msg) => {
     msg.chat.id,
 `👋 Welcome!
 
-📺 Latest videos dekhne ke liye niche button dabao.`,
+Aap @VIPVIRALVIDEOS_BOT pe pohche hain.
+
+📺 Latest videos dekhne ke liye niche button click karo:
+
+✨ Features:
+• HD photos & videos
+• Smart search
+• Likes & view counts
+• Smooth infinite scroll
+
+👇`,
     {
       reply_markup: {
         inline_keyboard: [
