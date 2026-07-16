@@ -46,7 +46,7 @@ inline_keyboard:[
 {
 text:"📢 Join Channel",
 web_app:{
-url:"https://viplink-miniapp2.vercel.app/"
+url:"https://viplink-miniapp-dgn17kcy2-faizanrex710-maxs-projects.vercel.app/"
 }
 }
 ],
@@ -96,7 +96,7 @@ inline_keyboard:[
 {
 text:"📱 Open Channel",
 web_app:{
-url:"https://viplink-miniapp2.vercel.app/"
+url:"https://viplink-miniapp-dgn17kcy2-faizanrex710-maxs-projects.vercel.app/"
 }
 }
 ]
