@@ -8,17 +8,18 @@
 <style>
 body{
 background:#0f172a;
-font-family:Arial;
+font-family:Arial,sans-serif;
 padding:20px;
-color:white;
+color:#fff;
 }
 
 .container{
-max-width:500px;
+max-width:600px;
 margin:auto;
 background:#1e293b;
 padding:20px;
 border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,.4);
 }
 
 input{
@@ -40,15 +41,37 @@ border-radius:10px;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
+margin-top:10px;
 }
 
 button:hover{
 background:#1d4ed8;
 }
 
-h2{
+.post{
+background:#334155;
+padding:15px;
+margin-top:15px;
+border-radius:10px;
+}
+
+.post img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.delete{
+background:#dc2626;
+margin-top:10px;
+}
+
+.delete:hover{
+background:#b91c1c;
+}
+
+h2,h3{
 text-align:center;
-margin-bottom:20px;
 }
 </style>
 
@@ -66,12 +89,20 @@ margin-bottom:20px;
 <input id="link" placeholder="Terabox / Diskwala Link">
 
 <button onclick="publishPost()">
-Publish Post
+🚀 Publish Post
 </button>
+
+<hr style="margin:20px 0;">
+
+<h3>📋 All Posts</h3>
+
+<div id="postsList">
+Loading...
+</div>
 
 </div>
 
-<script type="module" src="admin.js"></script>
+<script type="module" src="./admin.js"></script>
 
 </body>
 </html>
