@@ -270,3 +270,23 @@ margin-bottom:24px;
 }
 
 }
+
+.post-actions{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-top:14px;
+}
+
+.action-btn{
+flex:1;
+height:42px;
+border:none;
+border-radius:12px;
+background:#181923;
+color:#fff;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.2s;
+}
