@@ -55,7 +55,7 @@ color:#8f98aa;
 .right{
 display:flex;
 align-items:center;
-gap:14px;
+gap:10px;
 }
 
 .right button{
@@ -78,8 +78,8 @@ background:#222433;
 }
 
 .right button svg{
-width:28px;
-height:28px;
+width:24px;
+height:24px;
 stroke:#fff;
 }
 
