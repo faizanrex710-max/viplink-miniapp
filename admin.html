@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP Admin Panel</title>
+
+<style>
+body{
+background:#0f172a;
+font-family:Arial;
+padding:20px;
+color:white;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>🔥 VIP Admin Panel</h2>
+
+<input id="title" placeholder="Video Title">
+
+<input id="image" placeholder="Image URL">
+
+<input id="link" placeholder="Terabox / Diskwala Link">
+
+<button onclick="publishPost()">
+Publish Post
+</button>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
