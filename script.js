@@ -69,6 +69,22 @@ onclick="openVideo('${post.id}','${post.link}')">
 📥 Open Post
 </button>
 
+<div class="post-actions">
+
+<button onclick="likePost('${post.id}')">
+❤️ Like
+</button>
+
+<button onclick="savePost('${post.id}')">
+🔖 Saved
+</button>
+
+<button onclick="sharePost('${post.link}')">
+📤 Share
+</button>
+
+</div>
+
 </div>
 
 </div>
@@ -78,15 +94,12 @@ onclick="openVideo('${post.id}','${post.link}')">
 });
 
 }
-
 window.openVideo=async(id,link)=>{
 
 try{
 
 await updateDoc(doc(db,"posts",id),{
-
 views:increment(1)
-
 });
 
 }catch(e){}
@@ -94,6 +107,36 @@ views:increment(1)
 window.open(link,"_blank");
 
 };
+
+// ❤️ Like
+window.likePost=(id)=>{
+alert("❤️ Post Liked");
+};
+
+// 🔖 Save
+window.savePost=(id)=>{
+alert("🔖 Post Saved");
+};
+
+// 📤 Share
+window.sharePost=(link)=>{
+
+if(navigator.share){
+
+navigator.share({
+title:"Daily Viral Videos",
+url:link
+});
+
+}else{
+
+navigator.clipboard.writeText(link);
+alert("✅ Link Copied");
+
+}
+
+};
+
 // Search
 
 const searchInput=document.getElementById("searchInput");
@@ -105,9 +148,7 @@ searchInput.addEventListener("input",()=>{
 const value=searchInput.value.toLowerCase();
 
 const filtered=allPosts.filter(post=>
-
 (post.title||"").toLowerCase().includes(value)
-
 );
 
 renderPosts(filtered);
