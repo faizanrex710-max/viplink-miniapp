@@ -59,10 +59,10 @@ gap:10px;
 }
 
 .right button{
-width:52px;
-height:52px;
+width:46px;
+height:46px;
 border:none;
-border-radius:16px;
+border-radius:14px;
 background:#181923;
 border:1px solid rgba(255,255,255,.08);
 display:flex;
@@ -78,10 +78,10 @@ background:#222433;
 }
 
 .right button svg{
-    width:20px;
-    height:20px;
-    stroke:#fff;
-    stroke-width:2;
+width:18px;
+height:18px;
+stroke:#fff;
+stroke-width:2;
 }
 
 .container{
