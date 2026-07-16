@@ -18,7 +18,7 @@ z-index:1000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 18px;
+padding:16px 16px;
 background:#0f172a;
 border-bottom:1px solid rgba(255,255,255,.05);
 }
@@ -26,13 +26,13 @@ border-bottom:1px solid rgba(255,255,255,.05);
 .left{
 display:flex;
 align-items:center;
-gap:14px;
+gap:12px;
 }
 
 .avatar{
-width:52px;
-height:52px;
-border-radius:18px;
+width:44px;
+height:44px;
+border-radius:14px;
 background:#181923;
 border:1px solid rgba(255,255,255,.08);
 display:flex;
@@ -42,39 +42,39 @@ overflow:hidden;
 }
 
 .info h2{
-font-size:21px;
+font-size:19px;
 font-weight:700;
 color:#fff;
 }
 
 .info span{
-font-size:13px;
+font-size:12px;
 color:#8f98aa;
 }
 
 .right{
 display:flex;
 align-items:center;
-gap:10px;
+gap:8px;
 }
 
 .right button{
-width:46px;
-height:46px;
+width:42px;
+height:42px;
 border:none;
-border-radius:14px;
+border-radius:12px;
 background:#181923;
 border:1px solid rgba(255,255,255,.08);
 display:flex;
 align-items:center;
 justify-content:center;
-cursor:pointer;
 padding:0;
+cursor:pointer;
 transition:.25s;
 }
 
 .right button:hover{
-background:#222433;
+background:#232638;
 }
 
 .right button svg{
@@ -85,28 +85,29 @@ stroke-width:2;
 }
 
 .container{
-max-width:700px;
+max-width:720px;
 margin:auto;
-padding:18px;
+padding:16px;
 }
 
 .tabs{
 display:flex;
-gap:12px;
-margin-top:12px;
-margin-bottom:22px;
+gap:10px;
+margin-top:14px;
+margin-bottom:20px;
 }
 
 .tabs button{
 flex:1;
-height:52px;
+height:46px;
 border:none;
-border-radius:16px;
+border-radius:14px;
 background:#181923;
 color:#fff;
-font-size:16px;
+font-size:15px;
 font-weight:700;
 cursor:pointer;
+transition:.25s;
 }
 
 .tabs .active{
@@ -115,28 +116,30 @@ background:linear-gradient(90deg,#2563eb,#7c3aed);
 
 .card{
 background:#171f2f;
-border-radius:22px;
+border-radius:18px;
 overflow:hidden;
-margin-bottom:22px;
+margin-bottom:20px;
 border:1px solid rgba(255,255,255,.06);
-box-shadow:0 12px 28px rgba(0,0,0,.35);
+box-shadow:0 8px 22px rgba(0,0,0,.30);
 transition:.25s;
 }
 
 .card:hover{
-transform:translateY(-4px);
+transform:translateY(-3px);
 }
 
 .card img{
 width:100%;
 display:block;
+border-radius:18px 18px 0 0;
 }
+
 .content{
-padding:18px;
+padding:16px;
 }
 
 .title{
-font-size:20px;
+font-size:18px;
 font-weight:700;
 line-height:1.5;
 margin-bottom:10px;
@@ -144,19 +147,19 @@ color:#fff;
 }
 
 .views{
-font-size:14px;
+font-size:13px;
 color:#94a3b8;
-margin-bottom:16px;
+margin-bottom:14px;
 }
 
 .download-btn{
 width:100%;
-height:52px;
+height:46px;
 border:none;
-border-radius:16px;
+border-radius:14px;
 background:linear-gradient(90deg,#2563eb,#7c3aed);
 color:#fff;
-font-size:16px;
+font-size:15px;
 font-weight:700;
 cursor:pointer;
 transition:.25s;
@@ -190,58 +193,72 @@ background:transparent;
 @media(max-width:768px){
 
 .topbar{
-padding:15px;
+padding:14px;
 }
 
-.avatar{
-width:46px;
-height:46px;
-border-radius:15px;
-}
-
-.info h2{
-font-size:18px;
-}
-
-.info span{
-font-size:12px;
-}
-
-.right{
+.left{
 gap:10px;
 }
 
+.avatar{
+width:40px;
+height:40px;
+border-radius:12px;
+}
+
+.info h2{
+font-size:17px;
+}
+
+.info span{
+font-size:11px;
+}
+
+.right{
+gap:8px;
+}
+
 .right button{
-width:50px;
-height:50px;
-border-radius:16px;
+width:40px;
+height:40px;
+border-radius:12px;
 }
 
 .right button svg{
-width:24px;
-height:24px;
+width:16px;
+height:16px;
+stroke:#fff;
+stroke-width:2;
+}
+
+.tabs{
+gap:8px;
 }
 
 .tabs button{
-height:48px;
-font-size:15px;
+height:44px;
+font-size:14px;
 }
 
 .card{
-border-radius:18px;
+border-radius:16px;
 }
 
 .content{
-padding:15px;
+padding:14px;
 }
 
 .title{
-font-size:18px;
+font-size:17px;
+}
+
+.views{
+font-size:12px;
 }
 
 .download-btn{
-height:48px;
-font-size:15px;
+height:44px;
+font-size:14px;
 }
 
 }
@@ -253,7 +270,7 @@ max-width:760px;
 }
 
 .card{
-margin-bottom:26px;
+margin-bottom:24px;
 }
 
 }
