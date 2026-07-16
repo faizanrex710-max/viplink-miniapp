@@ -6,7 +6,8 @@ import {
   serverTimestamp,
   getDocs,
   deleteDoc,
-  doc
+  doc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 window.publishPost = async function () {
@@ -27,6 +28,7 @@ window.publishPost = async function () {
       image,
       link,
       views: 0,
+      likes: 0,
       createdAt: serverTimestamp()
     });
 
@@ -71,10 +73,28 @@ async function loadPosts() {
 
         <h3>${post.title}</h3>
 
-        <p>👁️ ${post.views || 0} Views</p>
+        <label>👁️ Views</label><br>
+        <input
+        id="views-${item.id}"
+        type="number"
+        value="${post.views || 0}"
+        style="width:100%;padding:8px;margin-bottom:10px;"><br>
+
+        <label>❤️ Likes</label><br>
+        <input
+        id="likes-${item.id}"
+        type="number"
+        value="${post.likes || 0}"
+        style="width:100%;padding:8px;margin-bottom:10px;"><br>
 
         <button
-        style="background:#dc2626;margin-top:10px;"
+        onclick="updatePost('${item.id}')"
+        style="background:#2563eb;margin-right:10px;">
+        💾 Update
+        </button>
+
+        <button
+        style="background:#dc2626;"
         onclick="deletePost('${item.id}')">
         🗑️ Delete
         </button>
@@ -86,24 +106,4 @@ async function loadPosts() {
 
 }
 
-window.deletePost = async function(id){
-
-  if(!confirm("Delete this post?")) return;
-
-  try{
-
-    await deleteDoc(doc(db,"posts",id));
-
-    alert("✅ Deleted");
-
-    loadPosts();
-
-  }catch(e){
-
-    alert(e.message);
-
-  }
-
-}
-
-loadPosts();
+window.update
