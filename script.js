@@ -127,20 +127,13 @@ window.likePost = async (id, btn) => {
       likes: increment(1)
     });
 
-    btn.innerHTML = "❤️ Liked";
-    btn.style.background = "#ff3b5c";
-    btn.style.color = "#fff";
-
-    loadPosts();
-
-    setTimeout(() => {
-      btn.innerHTML = "❤️ Like";
-      btn.style.background = "";
-      btn.style.color = "";
-    }, 1500);
+    await loadPosts();
 
   } catch (e) {
-    console.log(e);
+
+    alert(e.message);
+    console.error(e);
+
   }
 
 };
