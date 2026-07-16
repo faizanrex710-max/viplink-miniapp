@@ -14,6 +14,7 @@ const container=document.getElementById("posts");
 const postCount=document.getElementById("postCount");
 
 let allPosts=[];
+let savedPosts=JSON.parse(localStorage.getItem("savedPosts"))||[];
 
 async function loadPosts(){
 
@@ -47,6 +48,8 @@ container.innerHTML="";
 
 posts.forEach(post=>{
 
+const isSaved=savedPosts.includes(post.id);
+
 container.innerHTML+=`
 
 <div class="card">
@@ -78,7 +81,7 @@ onclick="likePost('${post.id}')">
 
 <button class="action-btn"
 onclick="savePost('${post.id}')">
-🔖 Saved
+${isSaved ? "✅ Saved" : "🔖 Saved"}
 </button>
 
 <button class="action-btn"
@@ -97,6 +100,7 @@ onclick="sharePost('${post.link}')">
 });
 
 }
+
 window.openVideo=async(id,link)=>{
 
 try{
@@ -121,7 +125,19 @@ alert("❤️ Liked");
 // 🔖 Save
 window.savePost=(id)=>{
 
-alert("🔖 Saved");
+if(savedPosts.includes(id)){
+
+savedPosts=savedPosts.filter(x=>x!==id);
+
+}else{
+
+savedPosts.push(id);
+
+}
+
+localStorage.setItem("savedPosts",JSON.stringify(savedPosts));
+
+renderPosts(allPosts);
 
 };
 
@@ -155,9 +171,7 @@ searchInput.addEventListener("input",()=>{
 const value=searchInput.value.toLowerCase();
 
 const filtered=allPosts.filter(post=>
-
 (post.title||"").toLowerCase().includes(value)
-
 );
 
 renderPosts(filtered);
@@ -166,16 +180,16 @@ renderPosts(filtered);
 
 }
 
-// Saved Tab
+// Tabs
 
 const tabs=document.querySelectorAll(".tabs button");
 
 tabs[0].onclick=()=>{
 
-renderPosts(allPosts);
-
 tabs[0].classList.add("active");
 tabs[1].classList.remove("active");
+
+renderPosts(allPosts);
 
 };
 
@@ -184,17 +198,24 @@ tabs[1].onclick=()=>{
 tabs[1].classList.add("active");
 tabs[0].classList.remove("active");
 
+const saved=allPosts.filter(post=>
+savedPosts.includes(post.id)
+);
+
+if(saved.length){
+
+renderPosts(saved);
+
+}else{
+
 container.innerHTML=`
-
 <div class="saved-empty">
-
 <h2>🔖 Saved Posts</h2>
-
 <p>No saved posts yet.</p>
-
 </div>
-
 `;
+
+}
 
 };
 
