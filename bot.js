@@ -122,6 +122,6 @@ console.log(err);
 }
 
 // 1 Hour = 3600000 ms
-setInterval(sendAutoMessage,3600000);
+setInterval(sendAutoMessage,60000););
 
 console.log("✅ Bot Started");
