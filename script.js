@@ -1,29 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-  const tg = window.Telegram?.WebApp;
+  const container = document.querySelector(".container");
 
-  if (tg) {
-    tg.ready();
-    tg.expand();
-  }
+  try {
 
-  // Search
-  const search = document.querySelector(".search");
-  const cards = document.querySelectorAll(".card");
+    const res = await fetch("./posts.json");
+    const posts = await res.json();
 
-  if (search) {
-    search.addEventListener("keyup", () => {
-      const value = search.value.toLowerCase();
+    let html = `
+      <input type="text" class="search" placeholder="🔍 Search Videos...">
+      <div class="category">
+        <button>🔥 Trending</button>
+        <button>😂 Funny</button>
+        <button>🎬 Movies</button>
+        <button>❤️ Status</button>
+      </div>
+    `;
 
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(value) ? "block" : "none";
-      });
+    posts.forEach(post => {
+
+      html += `
+      <div class="card">
+        <img src="${post.image}" alt="${post.title}">
+
+        <div class="content">
+          <div class="title">${post.title}</div>
+
+          <div class="desc">
+            👁️ ${post.views} • ⏰ ${post.time}
+          </div>
+
+          <button onclick="window.open('${post.link}','_blank')">
+            📥 Download Now
+          </button>
+        </div>
+      </div>
+      `;
+
     });
+
+    container.innerHTML = html;
+
+  } catch (e) {
+    container.innerHTML = "<h3>Posts loading failed.</h3>";
+    console.error(e);
   }
 
 });
-
-function openChannel() {
-  window.open("https://t.me/VIRALVIDEOS_8", "_blank");
-}
