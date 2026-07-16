@@ -48,7 +48,7 @@ container.innerHTML="";
 
 posts.forEach(post=>{
 
-const isSaved=savedPosts.includes(post.id);
+const isSaved=savedPosts.includes(String(post.id));
 
 container.innerHTML+=`
 
@@ -136,7 +136,7 @@ savedPosts=savedPosts.filter(x=>x!==id);
 
 }else{
 
-savedPosts.push(id);
+savedPosts.push(String(id));
 
 }
 
@@ -209,7 +209,7 @@ tabs[0].classList.remove("active");
 savedPosts=JSON.parse(localStorage.getItem("savedPosts"))||[];
 
 const saved=allPosts.filter(post=>
-savedPosts.includes(post.id)
+savedPosts.includes(String(post.id))
 );
 
 if(saved.length>0){
