@@ -69,7 +69,7 @@ ${post.title}
 <button
 class="download-btn"
 onclick="openVideo('${post.id}','${post.link}')">
-📥 Open Post
+📥 Open Video
 </button>
 
 <div class="post-actions">
