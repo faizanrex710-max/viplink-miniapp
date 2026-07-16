@@ -1,62 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Viral Videos</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Daily Viral Videos</title>  <link rel="stylesheet" href="./style.css">  
+<script src="https://telegram.org/js/telegram-web-app.js"></script>  </head>  <body>  <header class="topbar">  <div class="left">  <div class="avatar"></div>  <div class="info">  
+<h2>Daily Viral Videos</h2>  
+<span id="postCount">Loading...</span>  
+</div>  </div>  <div class="right">  <button id="searchBtn">🔍</button>
 
-<link rel="stylesheet" href="./style.css">
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-</head>
-
-<body>
-
-<header class="topbar">
-
-<div class="left">
-
-<div class="avatar"></div>
-
-<div class="info">
-<h2>Daily Viral Videos</h2>
-<span id="postCount">Loading...</span>
-</div>
-
-</div>
-
-<div class="right">
-
-<button id="searchBtn">
-
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d9deeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="11" cy="11" r="8"/>
-<line x1="21" y1="21" x2="16.65" y2="16.65"/>
-</svg>
-
-</button>
-
-<button id="refreshBtn" onclick="location.reload()">
-
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d9deeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M21 2v6h-6"/>
-<path d="M3 22v-6h6"/>
-<path d="M21 8a9 9 0 0 0-15-3.36L3 8"/>
-<path d="M3 16a9 9 0 0 0 15 3.36L21 16"/>
-</svg>
-
-</button>
-
-</div>
-
-</header>
-
-<div class="container">
-
-<div class="tabs">
-
-<button class="active">
-📂 All Posts
-</button>
-
-<button
+<button id="refreshBtn" onclick="location.reload()">  
+🔄  
+</button>  </div>  </header>  <div class="container">  <!-- Tabs -->  <div class="tabs">  <button class="active">  
+📂 All Posts  
+</button>  <button>  
+🔖 Saved  
+</button>  </div>  <!-- Posts -->  <div id="posts"></div>  </div>  <script type="module" src="./script.js"></script>  <script>  
+  
+const tg = window.Telegram?.WebApp;  
+  
+if(tg){  
+  
+tg.ready();  
+tg.expand();  
+  
+document.body.style.background =  
+tg.themeParams.bg_color || "#0f172a";  
+  
+try{  
+  
+tg.MainButton.setText("📢 Join Telegram");  
+tg.MainButton.show();  
+  
+tg.MainButton.onClick(()=>{  
+  
+tg.openTelegramLink("https://t.me/VIRALVIDEOS_8");  
+  
+});  
+  
+}catch(e){}  
+  
+}  
+  
+</script>  </body>  
+</html>
