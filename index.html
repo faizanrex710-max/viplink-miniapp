@@ -1,98 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Viral Videos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Viral Videos</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0f172a;
-color:white;
-}
-
-header{
-background:#111827;
-padding:15px;
-text-align:center;
-font-size:24px;
-font-weight:bold;
-position:sticky;
-top:0;
-}
-
-.container{
-max-width:700px;
-margin:auto;
-padding:15px;
-}
-
-.card{
-background:#1e293b;
-border-radius:12px;
-overflow:hidden;
-margin-bottom:20px;
-box-shadow:0 0 10px rgba(0,0,0,.3);
-}
-
-.card img{
-width:100%;
-display:block;
-}
-
-.content{
-padding:15px;
-}
-
-.title{
-font-size:18px;
-margin-bottom:10px;
-}
-
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:8px;
-background:#2563eb;
-color:#fff;
-font-size:16px;
-cursor:pointer;
-}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>Daily Viral Videos</header>
+<header>
+  Daily Viral Videos
+</header>
 
 <div class="container">
+
   <div class="card">
     <img src="https://picsum.photos/700/400" alt="Post">
 
     <div class="content">
-        <div class="title">
-            🔥 Latest Viral Video
-        </div>
+      <div class="title">
+        🔥 Latest Viral Video
+      </div>
 
-        <button onclick="openChannel()">
-            Open Channel
-        </button>
+      <div class="desc">
+        Join our Telegram channel to watch the latest viral videos every day.
+      </div>
+
+      <button onclick="openChannel()">
+        Open Channel
+      </button>
     </div>
-</div>
+  </div>
 
 </div>
+
+<script src="script.js"></script>
 
 <script>
-function openChannel(){
-    window.location.href="https://t.me/VIRALVIDEOS_8";
+function openChannel() {
+  window.location.href = "https://t.me/VIRALVIDEOS_8";
 }
 </script>
 
