@@ -16,6 +16,8 @@
 
 <div class="left">
 
+<div class="avatar"></div>
+
 <div class="info">
 <h2>Daily Viral Videos</h2>
 <span id="postCount">Loading...</span>
@@ -23,25 +25,21 @@
 
 </div>
 
-</header>
+<div class="right">
 
-<div class="container">
+<button id="searchBtn">🔍</button>
 
-<div class="top-actions">
-
-<input
-type="text"
-class="search"
-placeholder="🔍 Search Videos..."
-id="searchInput">
-
-<button
-class="refresh"
-onclick="location.reload()">
+<button id="refreshBtn" onclick="location.reload()">
 🔄
 </button>
 
 </div>
+
+</header>
+
+<div class="container">
+
+<!-- Tabs -->
 
 <div class="tabs">
 
@@ -54,6 +52,8 @@ onclick="location.reload()">
 </button>
 
 </div>
+
+<!-- Posts -->
 
 <div id="posts"></div>
 
