@@ -10,6 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 window.publishPost = async function () {
+
   const title = document.getElementById("title").value;
   const image = document.getElementById("image").value;
   const link = document.getElementById("link").value;
@@ -20,10 +21,12 @@ window.publishPost = async function () {
   }
 
   try {
+
     await addDoc(collection(db, "posts"), {
       title,
       image,
       link,
+      views: 0,
       createdAt: serverTimestamp()
     });
 
@@ -38,11 +41,13 @@ window.publishPost = async function () {
   } catch (e) {
     alert("Error : " + e.message);
   }
+
 };
 
 async function loadPosts() {
 
   const list = document.getElementById("postsList");
+
   if (!list) return;
 
   list.innerHTML = "";
@@ -54,12 +59,26 @@ async function loadPosts() {
     const post = item.data();
 
     list.innerHTML += `
-      <div style="background:#1e293b;padding:12px;border-radius:10px;margin-top:10px;">
-        <b>${post.title}</b><br><br>
+      <div style="
+        background:#1e293b;
+        padding:15px;
+        border-radius:10px;
+        margin-top:12px;
+      ">
 
-        <button onclick="deletePost('${item.id}')">
-          🗑️ Delete
+        <img src="${post.image}"
+        style="width:100%;border-radius:10px;margin-bottom:10px;">
+
+        <h3>${post.title}</h3>
+
+        <p>👁️ ${post.views || 0} Views</p>
+
+        <button
+        style="background:#dc2626;margin-top:10px;"
+        onclick="deletePost('${item.id}')">
+        🗑️ Delete
         </button>
+
       </div>
     `;
 
@@ -71,11 +90,19 @@ window.deletePost = async function(id){
 
   if(!confirm("Delete this post?")) return;
 
-  await deleteDoc(doc(db,"posts",id));
+  try{
 
-  alert("✅ Deleted");
+    await deleteDoc(doc(db,"posts",id));
 
-  loadPosts();
+    alert("✅ Deleted");
+
+    loadPosts();
+
+  }catch(e){
+
+    alert(e.message);
+
+  }
 
 }
 
