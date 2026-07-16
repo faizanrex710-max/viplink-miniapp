@@ -4,15 +4,5 @@ const tg = window.Telegram?.WebApp;
 if (tg) {
   tg.ready();
   tg.expand();
-
-  document.body.style.background =
-    tg.themeParams.bg_color || "#0f172a";
-
-  tg.MainButton.setText("📢 Join Telegram");
-  tg.MainButton.show();
-
-  tg.MainButton.onClick(() => {
-    Telegram.WebApp.openTelegramLink("https://t.me/VIRALVIDEOS_8");
-  });
 }
 </script>
