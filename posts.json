@@ -1,8 +1,26 @@
 [
   {
     "id": 1,
-    "title": "Welcome",
-    "image": "https://placehold.co/600x400",
-    "channel": "https://t.me/VIRALVIDEOS_8"
+    "title": "🔥 Latest Viral Video",
+    "image": "./file_0000000055387208992b1e0f18094e05.png",
+    "link": "https://www.diskwala.com/your-link-1",
+    "views": "1.2K",
+    "time": "2h"
+  },
+  {
+    "id": 2,
+    "title": "😂 Funny Viral Clip",
+    "image": "./file_0000000055387208992b1e0f18094e05.png",
+    "link": "https://www.diskwala.com/your-link-2",
+    "views": "850",
+    "time": "5h"
+  },
+  {
+    "id": 3,
+    "title": "🎬 New Movie Scene",
+    "image": "./file_0000000055387208992b1e0f18094e05.png",
+    "link": "https://terabox.com/your-link-3",
+    "views": "3.5K",
+    "time": "1d"
   }
 ]
