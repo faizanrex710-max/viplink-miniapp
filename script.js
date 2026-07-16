@@ -74,17 +74,20 @@ onclick="openVideo('${post.id}','${post.link}')">
 
 <div class="post-actions">
 
-<button class="action-btn"
+<button
+class="action-btn"
 onclick="likePost('${post.id}')">
 ❤️ Like
 </button>
 
-<button class="action-btn"
+<button
+class="action-btn"
 onclick="savePost('${post.id}')">
 ${isSaved ? "✅ Saved" : "🔖 Saved"}
 </button>
 
-<button class="action-btn"
+<button
+class="action-btn"
 onclick="sharePost('${post.link}')">
 📤 Share
 </button>
@@ -101,7 +104,7 @@ onclick="sharePost('${post.link}')">
 
 }
 
-window.openVideo=async(id,link)=>{
+window.openVideo = async(id,link)=>{
 
 try{
 
@@ -124,6 +127,8 @@ alert("❤️ Liked");
 
 // 🔖 Save
 window.savePost=(id)=>{
+
+savedPosts=JSON.parse(localStorage.getItem("savedPosts"))||[];
 
 if(savedPosts.includes(id)){
 
@@ -184,6 +189,7 @@ renderPosts(filtered);
 
 const tabs=document.querySelectorAll(".tabs button");
 
+// 📂 All Posts
 tabs[0].onclick=()=>{
 
 tabs[0].classList.add("active");
@@ -193,26 +199,35 @@ renderPosts(allPosts);
 
 };
 
+// 🔖 Saved Posts
 tabs[1].onclick=()=>{
 
 tabs[1].classList.add("active");
 tabs[0].classList.remove("active");
 
+// हर बार LocalStorage से नया डेटा पढ़ो
+savedPosts=JSON.parse(localStorage.getItem("savedPosts"))||[];
+
 const saved=allPosts.filter(post=>
 savedPosts.includes(post.id)
 );
 
-if(saved.length){
+if(saved.length>0){
 
 renderPosts(saved);
 
 }else{
 
 container.innerHTML=`
+
 <div class="saved-empty">
+
 <h2>🔖 Saved Posts</h2>
+
 <p>No saved posts yet.</p>
+
 </div>
+
 `;
 
 }
